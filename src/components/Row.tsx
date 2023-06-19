@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
+import "./Row.css"
 
 const img_base_URL = "https://image.tmdb.org/t/p/original";
 
-const Row = ({ title, fetchURL }: { title: string; fetchURL: string }) => {
+const Row = ({ title, fetchURL, isLargeRow }: { title: string; fetchURL: string; isLargeRow?: boolean}) => {
   const [movies, setMovies] = useState<any[]>([]);
 
   useEffect(() => {
@@ -16,18 +17,20 @@ const Row = ({ title, fetchURL }: { title: string; fetchURL: string }) => {
   }, [fetchURL]);
 
   return (
-    <>
+    <div className ="row">
       <h2>{title}</h2>
 
-      <div>
+      <div className="row_posters">
         {movies.map((movie) => (
           <img
-            src={`${img_base_URL}${movie.backdrop_path}`}
+            key={movie.id}
+            className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+            src={`${img_base_URL}${isLargeRow  ? movie.poster_path : movie.backdrop_path}`}
             alt={movie.title}
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
