@@ -1,5 +1,5 @@
 import axios from "../axios";
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import requests from '../requests';
 import "./Banner.css"
 
@@ -10,7 +10,7 @@ type Movie = {
     title?: string
     poster_path: string;
     overview?:string
-  }  
+  }
 
 function Banner() {
  const [movie, setMovie] = useState<Movie>();
