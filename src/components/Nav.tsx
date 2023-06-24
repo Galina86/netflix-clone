@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
+import ThemeToggle from "./ThemeToggle";
 
 function Nav() {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ function Nav() {
       } else setShow(false);
     });
     return () => {
-      window.removeEventListener("scroll", () => {});
+      window.removeEventListener("scroll", () => { });
     };
   }, []);
   return (
@@ -25,6 +26,9 @@ function Nav() {
         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
         alt="Netflix avatar"
       />
+      <div className="nav_toggle">
+        <ThemeToggle />
+      </div>
     </div>
   );
 }
