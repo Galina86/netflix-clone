@@ -6,6 +6,6 @@ export interface IAppTheme {
 }
 
 export interface IThemeContext {
-    theme: string;
+    theme: any;
     setTheme: any;
 }

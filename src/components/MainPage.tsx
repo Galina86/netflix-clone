@@ -11,6 +11,8 @@ import { IAppTheme } from "../appTheme.interface";
 const MainPage = () => {
 
   const { theme } = useContext(ThemeContext);
+  //@@@TODO move to handleThemeToggle 
+  localStorage.setItem('theme', theme);
 
   const mainPageStyle: IAppTheme = {
     dark: {
