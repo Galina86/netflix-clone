@@ -29,3 +29,10 @@
   width: 30px;
   object-fit: contain;
 }
+
+.nav_toggle {
+  position: fixed;
+  right: 160px;
+  width: 30px;
+  object-fit: contain;
+}

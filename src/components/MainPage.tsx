@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../App.css";
 
 import Row from "./Row";
 import requests from "../requests";
 import Banner from "../components/Banner";
+import { ThemeContext } from "../App";
+import { IAppTheme } from "../appTheme.interface";
+
 
 const MainPage = () => {
+
+  const { theme } = useContext(ThemeContext);
+  //@@@TODO move to handleThemeToggle 
+  localStorage.setItem('theme', theme);
+
+  const mainPageStyle: IAppTheme = {
+    dark: {
+      backgroundColor: '#111',
+      color: 'white'
+    },
+    light: {
+      backgroundColor: 'white',
+      color: 'black'
+    }
+  }
+
+  const themeStyle = {
+    ...(theme === 'light' ? mainPageStyle.light : mainPageStyle.dark)
+  }
+
+
   return (
-    <div>
+    <div style={themeStyle}>
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"
