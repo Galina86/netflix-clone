@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import "./MoviePage.css";
 import { IMAGE_BASE_URL } from "../constants";
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
 import { IAppTheme } from "../appTheme.interface";
 import { ThemeContext } from "../App";
 
@@ -9,6 +11,7 @@ const MoviePage = () => {
   const movie_id = url.substring(url.lastIndexOf("/") + 1);
   const { theme } = useContext(ThemeContext);
   const [result, setResult] = useState<any>();
+  const [trailerURL, setTrailerURL] = useState<string | null>(null);
 
   const tokens = {
     method: "GET",
@@ -44,11 +47,32 @@ const MoviePage = () => {
       setResult(json);
     };
     fetchMovies();
-  }, []);
+  }, [movie_id, tokens]);
 
   if (!result) {
     return null;
   }
+
+  const options = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  const handleClick = (result: any) => {
+    if (trailerURL) {
+      setTrailerURL("");
+    } else {
+      movieTrailer(result?.title || "")
+        .then((url: string) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerURL(urlParams.get("v"));
+        })
+        .catch((error: any) => console.log(error));
+    }
+  };
 
   return (
     <div style={themeStyle}>
@@ -59,12 +83,13 @@ const MoviePage = () => {
             className="movie__poster"
             src={`${IMAGE_BASE_URL}${result.poster_path}`}
             alt={result.title}
+            onClick={() => handleClick(result)}
           />
           <p className="movie__description">{result.overview}</p>
         </div>
       </div>
+      {trailerURL && <YouTube videoId={trailerURL} opts={options} />}
     </div>
-
   );
 };
 
