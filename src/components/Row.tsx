@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "../axios";
 import "./Row.css";
 import { useNavigate } from "react-router-dom";
-
-const img_base_URL = "https://image.tmdb.org/t/p/original";
+import { IMAGE_BASE_URL } from "../constants";
 
 const Row = ({
   title,
@@ -41,7 +40,7 @@ const Row = ({
             key={movie.id}
             onClick={() => handleClick(movie)}
             className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-            src={`${img_base_URL}${
+            src={`${IMAGE_BASE_URL}${
               isLargeRow ? movie.poster_path : movie.backdrop_path
             }`}
             alt={movie.title}

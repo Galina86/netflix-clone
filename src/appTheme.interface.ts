@@ -1,11 +1,11 @@
 import { CSSProperties } from "react";
 
 export interface IAppTheme {
-    dark: CSSProperties;
-    light: CSSProperties;
+  dark: CSSProperties;
+  light: CSSProperties;
 }
 
 export interface IThemeContext {
-    theme: any;
-    setTheme: any;
+  theme: any;
+  setTheme: any;
 }
