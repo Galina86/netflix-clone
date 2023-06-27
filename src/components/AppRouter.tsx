@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router";
 import MainPage from "../components/MainPage";
 import MoviePage from "./MoviePage";
