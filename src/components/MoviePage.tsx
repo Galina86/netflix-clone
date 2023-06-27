@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./MoviePage.css";
 import { IMAGE_BASE_URL } from "../constants";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+import { IAppTheme } from "../appTheme.interface";
+import { ThemeContext } from "../App";
 
 const MoviePage = () => {
   const url = window.location.pathname;
   const movie_id = url.substring(url.lastIndexOf("/") + 1);
-
+  const { theme } = useContext(ThemeContext);
   const [result, setResult] = useState<any>();
   const [trailerURL, setTrailerURL] = useState<string | null>(null);
 
@@ -18,6 +20,21 @@ const MoviePage = () => {
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNzQ0MmU0MGEzMmJkNzM2YzgwZTVjMWU1YjMyYTk2ZiIsInN1YiI6IjY0ODIzYzhhOGMwYTQ4MDEzY2M3OTcwOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rvNpahI0z9c9Z8uuKRpG0MMyzhAawZadYGCZOtqZtqE",
     },
+  };
+
+  const mainPageStyle: IAppTheme = {
+    dark: {
+      backgroundColor: "#111",
+      color: "white",
+    },
+    light: {
+      backgroundColor: "white",
+      color: "black",
+    },
+  };
+
+  const themeStyle = {
+    ...(theme === "light" ? mainPageStyle.light : mainPageStyle.dark),
   };
 
   useEffect(() => {
@@ -58,16 +75,18 @@ const MoviePage = () => {
   };
 
   return (
-    <div className="movie">
-      <h2 className="movie__title">{result["title"]}</h2>
-      <div className="movie__details">
-        <img
-          className="movie__poster"
-          src={`${IMAGE_BASE_URL}${result.poster_path}`}
-          alt={result.title}
-          onClick={() => handleClick(result)}
-        />
-        <p className="movie__description">{result.overview}</p>
+    <div style={themeStyle}>
+      <div className="movie">
+        <h2 className="movie__title">{result["title"]}</h2>
+        <div className="movie__details">
+          <img
+            className="movie__poster"
+            src={`${IMAGE_BASE_URL}${result.poster_path}`}
+            alt={result.title}
+            onClick={() => handleClick(result)}
+          />
+          <p className="movie__description">{result.overview}</p>
+        </div>
       </div>
       {trailerURL && <YouTube videoId={trailerURL} opts={options} />}
     </div>
