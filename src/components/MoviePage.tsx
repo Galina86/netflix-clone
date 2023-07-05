@@ -86,6 +86,15 @@ const MoviePage = () => {
           />
           <div className="movie__wrapper">
             <p className="movie__description">{result.overview}</p>
+            <p className="movie__rating">
+              Average rating: {result.vote_average}
+            </p>
+            {result.genres && (
+              <p className="movie__genre">
+                Genre:{" "}
+                {result.genres.map((genre: any) => genre.name).join(", ")}
+              </p>
+            )}
             <button
               className="movie__trailer-btn"
               onClick={() => handleClick(result)}
