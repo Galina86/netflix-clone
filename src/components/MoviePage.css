@@ -17,3 +17,16 @@
 .movie__details {
   display: flex;
 }
+
+.movie__description {
+  padding-bottom: 20px;
+}
+
+.movie__trailer-btn {
+  cursor: pointer;
+}
+
+.movie__wrapper {
+  margin-left: 20px;
+  margin-right: 20px;
+}

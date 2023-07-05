@@ -83,9 +83,16 @@ const MoviePage = () => {
             className="movie__poster"
             src={`${IMAGE_BASE_URL}${result.poster_path}`}
             alt={result.title}
-            onClick={() => handleClick(result)}
           />
-          <p className="movie__description">{result.overview}</p>
+          <div className="movie__wrapper">
+            <p className="movie__description">{result.overview}</p>
+            <button
+              className="movie__trailer-btn"
+              onClick={() => handleClick(result)}
+            >
+              Play Trailer
+            </button>
+          </div>
         </div>
       </div>
       {trailerURL && <YouTube videoId={trailerURL} opts={options} />}
