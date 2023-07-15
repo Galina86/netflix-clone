@@ -5,6 +5,7 @@ import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import { IAppTheme } from "../appTheme.interface";
 import { ThemeContext } from "../App";
+import Nav from "./Nav";
 
 const MoviePage = () => {
   const url = window.location.pathname;
@@ -76,6 +77,7 @@ const MoviePage = () => {
 
   return (
     <div style={themeStyle}>
+      <Nav />
       <div className="movie">
         <h2 className="movie__title">{result["title"]}</h2>
         <div className="movie__details">
