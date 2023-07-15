@@ -15,7 +15,7 @@ const LoginScreen = () => {
         />
       </div>
       <button onClick={() => setSignIn(true)} className="loginScreen__button">
-        Sing in
+        Sign in
       </button>
       <div className="loginScreen__gradient"></div>
       <div className="loginScreen__body">
