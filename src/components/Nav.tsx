@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import ThemeToggle from "./ThemeToggle";
-import { Link } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 function Nav() {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -26,6 +28,7 @@ function Nav() {
         />
       </a>
       <img
+        onClick={()=> navigate("/profile")}
         className="nav__avatar"
         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
         alt="Netflix avatar"
