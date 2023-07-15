@@ -6,6 +6,7 @@ import requests from "../requests";
 import Banner from "../components/Banner";
 import { ThemeContext } from "../App";
 import { IAppTheme } from "../appTheme.interface";
+import Nav from "./Nav";
 
 const MainPage = () => {
   const { theme } = useContext(ThemeContext);
@@ -29,6 +30,7 @@ const MainPage = () => {
 
   return (
     <div style={themeStyle}>
+      <Nav />
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"

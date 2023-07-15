@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Nav from "./components/Nav";
 import AppRouter from "./components/AppRouter";
 import { IThemeContext } from "./appTheme.interface";
 
@@ -16,7 +15,6 @@ const App = () => {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <div>
-        <Nav />
         <AppRouter />
       </div>
     </ThemeContext.Provider>
