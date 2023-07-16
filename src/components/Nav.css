@@ -29,6 +29,7 @@
   right: 20px;
   width: 30px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .nav_toggle {
