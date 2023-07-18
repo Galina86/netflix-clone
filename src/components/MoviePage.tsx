@@ -6,6 +6,21 @@ import movieTrailer from "movie-trailer";
 import { IAppTheme } from "../appTheme.interface";
 import { ThemeContext } from "../App";
 import Nav from "./Nav";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  height: 390,
+  width: 700,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 const MoviePage = () => {
   const url = window.location.pathname;
@@ -13,6 +28,10 @@ const MoviePage = () => {
   const { theme } = useContext(ThemeContext);
   const [result, setResult] = useState<any>();
   const [trailerURL, setTrailerURL] = useState<string | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const tokens = {
     method: "GET",
@@ -99,14 +118,28 @@ const MoviePage = () => {
             )}
             <button
               className="movie__trailer-btn"
-              onClick={() => handleClick(result)}
+              onClick={() => {
+                handleOpen();
+                handleClick(result);
+              }}
             >
               Play Trailer
             </button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+            >
+              <Box sx={style}>
+                {trailerURL ? (
+                  <YouTube videoId={trailerURL} opts={options} />
+                ) : (
+                  <p className='movie__trailer-error'>We are sorry, there is no trailer for this movie.</p>
+                )}
+              </Box>
+            </Modal>
           </div>
         </div>
       </div>
-      {trailerURL && <YouTube videoId={trailerURL} opts={options} />}
     </div>
   );
 };
