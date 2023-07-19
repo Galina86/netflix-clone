@@ -56,3 +56,9 @@
   font-size: 20px;
   text-align: center;
 }
+
+.movie__trailer-close-icon{
+  cursor: pointer;
+  padding-left: 95%;
+}
+

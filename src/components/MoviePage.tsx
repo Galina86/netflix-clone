@@ -8,6 +8,7 @@ import { ThemeContext } from "../App";
 import Nav from "./Nav";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import closeIcon from '../assets/images/close_icon.png'
 
 const style = {
   position: "absolute" as "absolute",
@@ -129,7 +130,8 @@ const MoviePage = () => {
               open={open}
               onClose={handleClose}
             >
-              <Box sx={style}>
+              <Box sx={style} >
+              <img src={closeIcon} alt="here image" onClick={handleClose} className='movie__trailer-close-icon' />
                 {trailerURL ? (
                   <YouTube videoId={trailerURL} opts={options} />
                 ) : (
