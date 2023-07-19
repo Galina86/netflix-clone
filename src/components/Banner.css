@@ -55,3 +55,30 @@
     #111
   );
 }
+
+.banner__trailer-close-icon{
+  cursor: pointer;
+  padding-left: 90%;
+}
+
+.banner__trailer-error{
+  color: white;
+  font-size: 20px;
+  margin-top: 15%;
+  text-align: center;
+}
+
+.banner__trailer-window{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 390px;
+  width: 700px;
+  background-color: black;
+  border: 2px solid #000;
+  padding-top: 20px;
+  padding-left: 20px
+};
+
+
