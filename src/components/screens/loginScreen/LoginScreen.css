@@ -25,12 +25,13 @@
   border: none;
   cursor: pointer;
   font-weight: 600;
+  text-transform: uppercase;
 }
 
 .loginScreen__gradient {
   width: 100%;
   z-index: 1;
-  height: 100vh;
+  height: 200vh;
   background: rgba(0, 0, 0, 0.4);
   background-image: linear-gradient(
     to top,
@@ -87,6 +88,7 @@
   border: none;
   font-weight: 600;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .loginScreen__input {

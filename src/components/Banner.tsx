@@ -6,7 +6,7 @@ import movieTrailer from "movie-trailer";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import YouTube from "react-youtube";
-import closeIcon from '../assets/images/close_white.png'
+import closeIcon from "../assets/images/close_white.png";
 
 type Movie = {
   backdrop_path: string;
@@ -38,8 +38,6 @@ function Banner() {
     }
     fetchData();
   }, []);
-
-  console.log("movie", movie)
 
   function truncate(str: string, max: number) {
     return str.length > max ? str.substr(0, max - 1) + "…" : str;
@@ -80,24 +78,33 @@ function Banner() {
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="banner__buttons">
-          <button className="banner__button" onClick={() => {
-                handleOpen();
-                handleClick(result);
-              }} >Play</button>
+          <button
+            className="banner__button"
+            onClick={() => {
+              handleOpen();
+              handleClick(result);
+            }}
+          >
+            Play
+          </button>
 
-          <Modal
-              open={open}
-              onClose={handleClose}
-            >
-              <Box className="banner__trailer-window" >
-              <img src={closeIcon} alt="here image" onClick={handleClose} className="banner__trailer-close-icon"/> 
-                {trailerURL ? (
-                  <YouTube videoId={trailerURL} opts={options} />
-                ) : (
-                  <p className="banner__trailer-error">We are sorry, there is no trailer for this movie.</p>
-                )}
-              </Box>
-            </Modal>
+          <Modal open={open} onClose={handleClose}>
+            <Box className="banner__trailer-window">
+              <img
+                src={closeIcon}
+                alt="here image"
+                onClick={handleClose}
+                className="banner__trailer-close-icon"
+              />
+              {trailerURL ? (
+                <YouTube videoId={trailerURL} opts={options} />
+              ) : (
+                <p className="banner__trailer-error">
+                  We are sorry, there is no trailer for this movie.
+                </p>
+              )}
+            </Box>
+          </Modal>
         </div>
         <h1 className="banner__description">
           {truncate(`${movie?.overview}`, 150)}
