@@ -12,6 +12,7 @@
   top: 20px;
   width: 150px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .loginScreen__button {

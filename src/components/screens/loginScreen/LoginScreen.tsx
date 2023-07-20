@@ -7,6 +7,10 @@ const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
 
+  const reload = () =>{
+    window.location.reload()
+  }
+
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
@@ -14,6 +18,7 @@ const LoginScreen = () => {
           className="loginScreen__logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
           alt="Netflix logo"
+          onClick={reload}
         />
       </div>
       <button onClick={() => setSignIn(true)} className="loginScreen__button">
