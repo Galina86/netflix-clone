@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./LoginScreen.css";
 import SignInScreen from "../signInScreen/SignInScreen";
 import SignUpScreen from "../signUpScreen/SignUpScreen";
@@ -6,6 +6,12 @@ import SignUpScreen from "../signUpScreen/SignUpScreen";
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+
+ const signUpAndSetLocalStorage = ()=> {
+     setSignUp(true);
+    localStorage.setItem('email', emailRef.current!.value)
+ }
 
   const reload = () =>{
     window.location.reload()
@@ -40,10 +46,10 @@ const LoginScreen = () => {
             </h3>
             <div className="loginScreen__input">
               <form>
-                <input type="email" placeholder="Email Address" />
+                <input type="email" placeholder="Email Address" ref={emailRef}/>
                 <button
                   onClick={() => {
-                    setSignUp(true);
+                    signUpAndSetLocalStorage()
                   }}
                   className="loginScreen_getStarted"
                 >
