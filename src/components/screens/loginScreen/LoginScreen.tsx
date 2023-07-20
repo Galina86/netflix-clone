@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./LoginScreen.css";
-import SignupScreen from "../signupScreen/SignupScreen";
+import SignInScreen from "../signInScreen/SignInScreen";
+import SignUpScreen from "../signUpScreen/SignUpScreen";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   return (
     <div className="loginScreen">
@@ -15,12 +17,14 @@ const LoginScreen = () => {
         />
       </div>
       <button onClick={() => setSignIn(true)} className="loginScreen__button">
-        Sign in
+        Sign In
       </button>
       <div className="loginScreen__gradient"></div>
       <div className="loginScreen__body">
         {signIn ? (
-          <SignupScreen />
+          <SignInScreen />
+        ) : signUp ? (
+          <SignUpScreen />
         ) : (
           <>
             <h1>Unlimited movies, TV shows, and more</h1>
@@ -33,11 +37,12 @@ const LoginScreen = () => {
               <form>
                 <input type="email" placeholder="Email Address" />
                 <button
-                  onClick={() => setSignIn(true)}
+                  onClick={() => {
+                    setSignUp(true);
+                  }}
                   className="loginScreen_getStarted"
                 >
-                  {" "}
-                  GET STARTED{" "}
+                  Get started
                 </button>
               </form>
             </div>

@@ -10,6 +10,7 @@
 - Firebase
 - Material UI (to build modal window component)
 - Axios
+- Redux
 
 ### Authors:
 
