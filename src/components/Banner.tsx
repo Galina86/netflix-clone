@@ -39,30 +39,32 @@ function Banner() {
     fetchData();
   }, []);
 
+  console.log("movie", movie)
+
   function truncate(str: string, max: number) {
     return str.length > max ? str.substr(0, max - 1) + "…" : str;
   }
 
-  // const handleClick = (result: any) => {
-  //   if (trailerURL) {
-  //     setTrailerURL("");
-  //   } else {
-  //     movieTrailer(result?.title || "")
-  //       .then((url: string) => {
-  //         const urlParams = new URLSearchParams(new URL(url).search);
-  //         setTrailerURL(urlParams.get("v"));
-  //       })
-  //       .catch((error: any) => console.log(error));
-  //   }
-  // };
+  const handleClick = (result: any) => {
+    if (trailerURL) {
+      setTrailerURL("");
+    } else {
+      movieTrailer(result?.title || "")
+        .then((url: string) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerURL(urlParams.get("v"));
+        })
+        .catch((error: any) => console.log(error));
+    }
+  };
 
-  // const options = {
-  //   height: "390",
-  //   width: "100%",
-  //   playerVars: {
-  //     autoplay: 1,
-  //   },
-  // };
+  const options = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
   return (
     <header
@@ -80,20 +82,20 @@ function Banner() {
         <div className="banner__buttons">
           <button className="banner__button" onClick={() => {
                 handleOpen();
-                // handleClick(result);
+                handleClick(result);
               }} >Play</button>
-          <button className="banner__button">My List</button>
+
           <Modal
               open={open}
               onClose={handleClose}
             >
               <Box className="banner__trailer-window" >
               <img src={closeIcon} alt="here image" onClick={handleClose} className="banner__trailer-close-icon"/> 
-                {/* {trailerURL ? (
+                {trailerURL ? (
                   <YouTube videoId={trailerURL} opts={options} />
-                ) : ( */}
+                ) : (
                   <p className="banner__trailer-error">We are sorry, there is no trailer for this movie.</p>
-                {/* )} */}
+                )}
               </Box>
             </Modal>
         </div>
