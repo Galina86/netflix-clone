@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "./LoginScreen.css";
 import SignInScreen from "../signInScreen/SignInScreen";
-import SignUpScreen from "../signUpScreen/SignUpScreen";
+import SignUp from "../signUpScreen/SignUp";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
@@ -35,7 +35,7 @@ const LoginScreen = () => {
         {signIn ? (
           <SignInScreen />
         ) : signUp ? (
-          <SignUpScreen />
+          <SignUp />
         ) : (
           <>
             <h1>Unlimited movies, TV shows, and more</h1>

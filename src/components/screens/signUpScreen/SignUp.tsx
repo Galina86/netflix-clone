@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import "./SignUpScreen.css";
+import "./SignUp.css";
 import { auth } from "../../../firebase";
 
-const SignUpScreen = () => {
+const SignUp = () => {
 
   const savedEmail = localStorage.getItem('email');
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -46,4 +46,4 @@ useEffect(()=>{
   );
 };
 
-export default SignUpScreen;
+export default SignUp;
