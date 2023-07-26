@@ -1,17 +1,16 @@
 import { useContext } from "react";
-import "../App.css";
 
-import Row from "./Row";
-import requests from "../requests";
-import Banner from "../components/Banner";
-import { ThemeContext } from "../App";
-import { IAppTheme } from "../appTheme.interface";
-import Nav from "./Nav";
+import Row from "../../row/Row";
+import requests from "../../../requests";
+import Banner from "../../banner/Banner";
+import { ThemeContext } from "../../../App";
+import { IAppTheme } from "../../../appTheme.interface";
+import Nav from "../../nav/Nav";
 
 const MainPage = () => {
-  const { theme } = useContext(ThemeContext);
+  const { themeColor } = useContext(ThemeContext);
   //@@@TODO move to handleThemeToggle
-  localStorage.setItem("theme", theme);
+  localStorage.setItem("theme", themeColor);
 
   const mainPageStyle: IAppTheme = {
     dark: {
@@ -25,7 +24,7 @@ const MainPage = () => {
   };
 
   const themeStyle = {
-    ...(theme === "light" ? mainPageStyle.light : mainPageStyle.dark),
+    ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
   };
 
   return (

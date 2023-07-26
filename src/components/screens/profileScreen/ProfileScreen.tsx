@@ -1,4 +1,4 @@
-import Nav from "../../Nav";
+import Nav from "../../nav/Nav";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../features/userSlice";
 import { auth } from "../../../firebase";

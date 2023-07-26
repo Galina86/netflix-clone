@@ -1,12 +1,14 @@
-import axios from "../axios";
+import axios from "../../axios";
 import { useEffect, useState } from "react";
-import requests from "../requests";
+import requests from "../../requests";
 import "./Banner.css";
 import movieTrailer from "movie-trailer";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import YouTube from "react-youtube";
-import closeIcon from "../assets/images/close_white.png";
+import { Button } from "@mui/material";
+import closeIcon from '../../assets/images/close_white.png'
+import ToggleButton from "@mui/material";
 
 type Movie = {
   backdrop_path: string;
@@ -77,8 +79,8 @@ function Banner() {
         <h1 className="banner__title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
-        <div className="banner__buttons">
-          <button
+          <Button
+          variant="contained" color="error"
             className="banner__button"
             onClick={() => {
               handleOpen();
@@ -86,7 +88,7 @@ function Banner() {
             }}
           >
             Play
-          </button>
+          </Button>
 
           <Modal open={open} onClose={handleClose}>
             <Box className="banner__trailer-window">
@@ -105,7 +107,6 @@ function Banner() {
               )}
             </Box>
           </Modal>
-        </div>
         <h1 className="banner__description">
           {truncate(`${movie?.overview}`, 150)}
         </h1>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import axios from "../axios";
+import axios from "../../axios";
 import "./Row.css";
 import { useNavigate } from "react-router-dom";
-import { IMAGE_BASE_URL } from "../constants";
+import { IMAGE_BASE_URL } from "../../constants";
 
 const Row = ({
   title,

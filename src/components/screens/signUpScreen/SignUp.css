@@ -42,3 +42,12 @@
   text-align: left;
   margin-bottom: 25px;
 }
+
+.MuiInputBase-input  {
+  background: white;
+}
+
+.MuiTextField-root {
+  background: white;
+  margin-bottom: 20px;
+}

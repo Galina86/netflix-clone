@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
-import MainPage from "../components/MainPage";
-import MoviePage from "./MoviePage";
+import MainPage from "./screens/mainPageScreen/MainPage";
+import MoviePage from "./screens/moviePageScreen/MoviePage";
 import LoginScreen from "./screens/loginScreen/LoginScreen";
 import { useEffect } from "react";
 import { auth } from "../firebase";
