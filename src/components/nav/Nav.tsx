@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import ThemeToggle from "../ThemeToggle";
-import {useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 
 function Nav() {
   const [show, setShow] = useState(false);
@@ -21,13 +21,13 @@ function Nav() {
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
-      <a href="/">
-        <img
+      <Link to="/">
+      <img
           className="nav__logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
           alt="Netflix logo"
         />
-      </a>
+      </Link>
       <img
         onClick={()=> navigate("/profile")}
         className="nav__avatar"
