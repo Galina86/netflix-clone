@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import "./MoviePage.css";
-import { IMAGE_BASE_URL } from "../constants";
+import { IMAGE_BASE_URL } from "../../../constants";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import { IAppTheme } from "../appTheme.interface";
-import { ThemeContext } from "../App";
-import Nav from "./Nav";
+import { IAppTheme } from "../../../appTheme.interface";
+import { ThemeContext } from "../../../App";
+import Nav from "../../nav/Nav";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import closeIcon from '../assets/images/close_icon.png'
+import closeIcon from '../../../assets/images/close_icon.png'
+import Button from "@mui/material/Button";
 
 const style = {
   position: "absolute" as "absolute",
@@ -26,7 +27,7 @@ const style = {
 const MoviePage = () => {
   const url = window.location.pathname;
   const movie_id = url.substring(url.lastIndexOf("/") + 1);
-  const { theme } = useContext(ThemeContext);
+  const { themeColor } = useContext(ThemeContext);
   const [result, setResult] = useState<any>();
   const [trailerURL, setTrailerURL] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -55,7 +56,7 @@ const MoviePage = () => {
   };
 
   const themeStyle = {
-    ...(theme === "light" ? mainPageStyle.light : mainPageStyle.dark),
+    ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
   };
 
   useEffect(() => {
@@ -117,15 +118,15 @@ const MoviePage = () => {
                 {result.genres.map((genre: any) => genre.name).join(", ")}
               </p>
             )}
-            <button
-              className="movie__trailer-btn"
-              onClick={() => {
+            <Button
+               variant="contained" color="error"
+               onClick={() => {
                 handleOpen();
                 handleClick(result);
               }}
             >
               Play Trailer
-            </button>
+            </Button>
             <Modal
               open={open}
               onClose={handleClose}

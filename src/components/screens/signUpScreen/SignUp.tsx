@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./SignUp.css";
 import { auth } from "../../../firebase";
+import { TextField } from "@mui/material";
 
 const SignUp = () => {
 

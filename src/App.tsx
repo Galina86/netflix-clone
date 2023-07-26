@@ -8,12 +8,12 @@ const App = () => {
   //@@@TODO: think about better place for this logic
   const isLocalStorage = localStorage.getItem("theme") !== null;
   const themeFromLocalStorage = localStorage.getItem("theme");
-  const [theme, setTheme] = useState(
-    isLocalStorage ? themeFromLocalStorage : "dark"
+  const [themeColor, setThemeColor] = useState(
+    isLocalStorage ? themeFromLocalStorage : "light"
   );
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ themeColor, setThemeColor }}>
       <div>
         <AppRouter />
       </div>

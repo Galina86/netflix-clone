@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../ThemeToggle";
 import {useNavigate } from "react-router-dom";
 
 function Nav() {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
