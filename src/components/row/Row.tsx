@@ -3,26 +3,20 @@ import axios from "../../axios";
 import "./Row.css";
 import { useNavigate } from "react-router-dom";
 import { IMAGE_BASE_URL } from "../../constants";
+import {IRow} from './row.interface'
 
-const Row = ({
-  title,
-  fetchURL,
-  isLargeRow,
-}: {
-  title: string;
-  fetchURL: string;
-  isLargeRow?: boolean;
-}) => {
+ 
+const Row = (props:IRow) => {
   const [movies, setMovies] = useState<any[]>([]);
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchURL);
+      const request = await axios.get(props.fetchURL);
       setMovies(request.data.results);
       return request;
     }
     fetchData();
-  }, [fetchURL]);
+  }, [props.fetchURL]);
 
   let navigate = useNavigate();
   const handleClick = (movie: { id: number }) => {
@@ -32,16 +26,16 @@ const Row = ({
 
   return (
     <div className="row">
-      <h2>{title}</h2>
+      <h2>{props.title}</h2>
 
       <div className="row_posters">
         {movies.map((movie) => (
           <img
             key={movie.id}
             onClick={() => handleClick(movie)}
-            className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+            className={`row_poster ${props.isLargeRow && "row_posterLarge"}`}
             src={`${IMAGE_BASE_URL}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
+              props.isLargeRow ? movie.poster_path : movie.backdrop_path
             }`}
             alt={movie.title}
           />

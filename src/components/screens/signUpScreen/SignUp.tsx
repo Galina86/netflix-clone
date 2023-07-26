@@ -35,8 +35,6 @@ useEffect(()=>{
     <div className="signUpScreen">
       <form>
         <h1>Create your account</h1>
-        <input type="text" placeholder="First Name" />
-        <input type="text" placeholder="Last Name" />
         <input ref={emailRef} type="email" placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
         <button type="submit" onClick={register}>

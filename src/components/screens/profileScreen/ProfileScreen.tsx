@@ -1,6 +1,6 @@
 import Nav from "../../nav/Nav";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../../features/userSlice";
+import { selectUser } from "../../../redux/userSlice";
 import { auth } from "../../../firebase";
 import { useNavigate } from "react-router";
 import "./ProfileScreen.css";
