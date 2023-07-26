@@ -9,18 +9,11 @@ import YouTube from "react-youtube";
 import { Button } from "@mui/material";
 import closeIcon from '../../assets/images/close_white.png'
 import ToggleButton from "@mui/material";
+import { IBanner } from "./banner.interface";
 
-type Movie = {
-  backdrop_path: string;
-  name?: string;
-  original_name?: string;
-  title?: string;
-  poster_path: string;
-  overview?: string;
-};
 
 function Banner() {
-  const [movie, setMovie] = useState<Movie>();
+  const [movie, setMovie] = useState<IBanner>();
   const [result, setResult] = useState<any>();
   const [trailerURL, setTrailerURL] = useState<string | null>(null);
   const [open, setOpen] = useState<boolean>(false);

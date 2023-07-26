@@ -5,7 +5,7 @@ import LoginScreen from "./screens/loginScreen/LoginScreen";
 import { useEffect } from "react";
 import { auth } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUser } from "../features/userSlice";
+import { login, logout, selectUser } from "../redux/userSlice";
 import ProfileScreen from "./screens/profileScreen/ProfileScreen";
 
 const AppRouter = () => {
