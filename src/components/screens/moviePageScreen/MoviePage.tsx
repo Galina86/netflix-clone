@@ -69,7 +69,8 @@ const MoviePage = () => {
       setResult(json);
     };
     fetchMovies();
-  }, [movie_id, tokens]);
+    //removed dependencies to fix endless call to server 
+  }, []);
 
   if (!result) {
     return null;

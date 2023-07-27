@@ -7,7 +7,6 @@ const ThemeToggle = () => {
 
   const handleThemeToggle = () => {
     setThemeColor(themeColor === "light" ? "dark" : "light");
-  console.log("hello")
   };
 
   return (
