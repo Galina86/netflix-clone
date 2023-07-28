@@ -9,6 +9,7 @@ import YouTube from "react-youtube";
 import { Button } from "@mui/material";
 import closeIcon from "../../assets/images/close_white.png";
 import { IBanner } from "./banner.interface";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Banner() {
   const [movie, setMovie] = useState<IBanner>();
@@ -64,43 +65,54 @@ function Banner() {
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
       }}
     >
-      <div className="banner__contents">
-        <h1 className="banner__title">
-          {movie?.title || movie?.name || movie?.original_name}
-        </h1>
-        <Button
-          variant="contained"
-          color="error"
-          className="banner__button"
-          onClick={() => {
-            handleOpen();
-            handleClick(result);
+      {movie ? (
+        <div className="banner__contents">
+          <h1 className="banner__title">
+            {movie?.title || movie?.name || movie?.original_name}
+          </h1>
+          <Button
+            variant="contained"
+            color="error"
+            className="banner__button"
+            onClick={() => {
+              handleOpen();
+              handleClick(result);
+            }}
+          >
+            Play
+          </Button>
+          <Modal open={open} onClose={handleClose}>
+            <Box className="banner__trailer-window">
+              <img
+                src={closeIcon}
+                alt="close icon"
+                onClick={handleClose}
+                className="banner__trailer-close-icon"
+              />
+              {trailerURL ? (
+                <YouTube videoId={trailerURL} opts={options} />
+              ) : (
+                <p className="banner__trailer-error">
+                  We are sorry, there is no trailer for this movie.
+                </p>
+              )}
+            </Box>
+          </Modal>
+          <h1 className="banner__description">
+            {truncate(`${movie?.overview}`, 150)}
+          </h1>
+        </div>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: "60px",
           }}
         >
-          Play
-        </Button>
-
-        <Modal open={open} onClose={handleClose}>
-          <Box className="banner__trailer-window">
-            <img
-              src={closeIcon}
-              alt="close icon"
-              onClick={handleClose}
-              className="banner__trailer-close-icon"
-            />
-            {trailerURL ? (
-              <YouTube videoId={trailerURL} opts={options} />
-            ) : (
-              <p className="banner__trailer-error">
-                We are sorry, there is no trailer for this movie.
-              </p>
-            )}
-          </Box>
-        </Modal>
-        <h1 className="banner__description">
-          {truncate(`${movie?.overview}`, 150)}
-        </h1>
-      </div>
+          <CircularProgress />
+        </Box>
+      )}
       <div className="banner--fadeBottom"></div>
     </header>
   );
