@@ -3,10 +3,9 @@ import axios from "../../axios";
 import "./Row.css";
 import { useNavigate } from "react-router-dom";
 import { IMAGE_BASE_URL } from "../../constants";
-import {IRow} from './row.interface'
+import { IRow } from "./row.interface";
 
- 
-const Row = (props:IRow) => {
+const Row = (props: IRow) => {
   const [movies, setMovies] = useState<any[]>([]);
 
   useEffect(() => {

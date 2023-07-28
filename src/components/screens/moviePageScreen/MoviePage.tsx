@@ -8,7 +8,7 @@ import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import closeIcon from '../../../assets/images/close_icon.png'
+import closeIcon from "../../../assets/images/close_icon.png";
 import Button from "@mui/material/Button";
 
 const style = {
@@ -35,12 +35,13 @@ const MoviePage = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const tmdbToken = process.env.REACT_APP_TMDB_TOKEN;
+
   const tokens = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNzQ0MmU0MGEzMmJkNzM2YzgwZTVjMWU1YjMyYTk2ZiIsInN1YiI6IjY0ODIzYzhhOGMwYTQ4MDEzY2M3OTcwOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rvNpahI0z9c9Z8uuKRpG0MMyzhAawZadYGCZOtqZtqE",
+      Authorization: `Bearer ${tmdbToken}`,
     },
   };
 
@@ -69,7 +70,7 @@ const MoviePage = () => {
       setResult(json);
     };
     fetchMovies();
-    //removed dependencies to fix endless call to server 
+    //removed dependencies to fix endless call to server
   }, []);
 
   if (!result) {
@@ -120,24 +121,29 @@ const MoviePage = () => {
               </p>
             )}
             <Button
-               variant="contained" color="error"
-               onClick={() => {
+              variant="contained"
+              color="error"
+              onClick={() => {
                 handleOpen();
                 handleClick(result);
               }}
             >
               Play Trailer
             </Button>
-            <Modal
-              open={open}
-              onClose={handleClose}
-            >
-              <Box sx={style} >
-              <img src={closeIcon} alt="here image" onClick={handleClose} className='movie__trailer-close-icon' />
+            <Modal open={open} onClose={handleClose}>
+              <Box sx={style}>
+                <img
+                  src={closeIcon}
+                  alt="close icon"
+                  onClick={handleClose}
+                  className="movie__trailer-close-icon"
+                />
                 {trailerURL ? (
                   <YouTube videoId={trailerURL} opts={options} />
                 ) : (
-                  <p className='movie__trailer-error'>We are sorry, there is no trailer for this movie.</p>
+                  <p className="movie__trailer-error">
+                    We are sorry, there is no trailer for this movie.
+                  </p>
                 )}
               </Box>
             </Modal>
