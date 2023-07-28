@@ -27,22 +27,32 @@ const MainPage = () => {
     ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
   };
 
+  const rows = [
+    {
+      title: "NETFLIX ORIGINALS",
+      fetchURL: requests.fetchNetflixOriginals,
+      isLargeRow: true,
+    },
+    { title: "Trending Now", fetchURL: requests.fetchTrending },
+    { title: "Top Rated", fetchURL: requests.fetchTopRated },
+    { title: "Action Movies", fetchURL: requests.fetchActionMovies },
+    { title: "Comedy Movies", fetchURL: requests.fetchComedyMovies },
+    { title: "Horror Movies", fetchURL: requests.fetchHorrorMovies },
+    { title: "Romance Movies", fetchURL: requests.fetchRomanceMovies },
+    { title: "Documentaries", fetchURL: requests.fetchDocumentaries },
+  ];
+
   return (
     <div style={themeStyle}>
       <Nav />
       <Banner />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchURL={requests.fetchNetflixOriginals}
-        isLargeRow
-      />
-      <Row title="Trending Now" fetchURL={requests.fetchTrending} />
-      <Row title="Top Rated" fetchURL={requests.fetchTopRated} />
-      <Row title="Action Movies" fetchURL={requests.fetchActionMovies} />
-      <Row title="Comedy Movies" fetchURL={requests.fetchComedyMovies} />
-      <Row title="Horror Movies" fetchURL={requests.fetchHorrorMovies} />
-      <Row title="Romance Movies" fetchURL={requests.fetchRomanceMovies} />
-      <Row title="Documentaries" fetchURL={requests.fetchDocumentaries} />
+      {rows.map((row) => (
+        <Row
+          title={row.title}
+          fetchURL={row.fetchURL}
+          isLargeRow={row.isLargeRow}
+        />
+      ))}
     </div>
   );
 };

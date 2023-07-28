@@ -25,21 +25,26 @@ const Row = (props: IRow) => {
 
   return (
     <div className="row">
-      <h2>{props.title}</h2>
-
-      <div className="row_posters">
-        {movies.map((movie) => (
-          <img
-            key={movie.id}
-            onClick={() => handleClick(movie)}
-            className={`row_poster ${props.isLargeRow && "row_posterLarge"}`}
-            src={`${IMAGE_BASE_URL}${
-              props.isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.title}
-          />
-        ))}
-      </div>
+      {movies.length !== 0 && (
+        <>
+          <h2>{props.title}</h2>
+          <div className="row_posters">
+            {movies.map((movie) => (
+              <img
+                key={movie.id}
+                onClick={() => handleClick(movie)}
+                className={`row_poster ${
+                  props.isLargeRow && "row_posterLarge"
+                }`}
+                src={`${IMAGE_BASE_URL}${
+                  props.isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                alt={movie.title}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
