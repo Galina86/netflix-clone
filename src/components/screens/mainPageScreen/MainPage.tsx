@@ -46,8 +46,9 @@ const MainPage = () => {
     <div style={themeStyle}>
       <Nav />
       <Banner />
-      {rows.map((row) => (
+      {rows.map((row, index) => (
         <Row
+          key={index}
           title={row.title}
           fetchURL={row.fetchURL}
           isLargeRow={row.isLargeRow}
