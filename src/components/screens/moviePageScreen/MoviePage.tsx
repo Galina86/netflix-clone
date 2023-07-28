@@ -8,7 +8,7 @@ import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import closeIcon from "../../../assets/images/close_icon.png";
+import closeIcon from "../../../assets/images/close_white.png";
 import Button from "@mui/material/Button";
 
 const style = {
