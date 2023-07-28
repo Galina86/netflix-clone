@@ -1,21 +1,18 @@
 import { useEffect, useRef } from "react";
 import "./SignUp.css";
 import { auth } from "../../../firebase";
-import { TextField } from "@mui/material";
 
 const SignUp = () => {
-
-  const savedEmail = localStorage.getItem('email');
+  const savedEmail = localStorage.getItem("email");
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
-useEffect(()=>{
-  if (savedEmail!== null){
-    emailRef.current!.value = savedEmail; 
-  }
-},[savedEmail])
-  
-  
+  useEffect(() => {
+    if (savedEmail !== null) {
+      emailRef.current!.value = savedEmail;
+    }
+  }, [savedEmail]);
+
   const register = (e: any) => {
     e.preventDefault();
     auth
