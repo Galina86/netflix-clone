@@ -30,11 +30,11 @@ const SignUp = () => {
 
   return (
     <div className="signUpScreen">
-      <form>
+      <form onSubmit={register}>
         <h1>Create your account</h1>
         <input ref={emailRef} type="email" placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
-        <button type="submit" onClick={register}>
+        <button type="submit" >
           Sign Up
         </button>
       </form>
