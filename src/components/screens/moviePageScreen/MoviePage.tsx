@@ -1,39 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import "./MoviePage.css";
 import { IMAGE_BASE_URL } from "../../../constants";
-import YouTube from "react-youtube";
-import movieTrailer from "movie-trailer";
 import { IAppTheme } from "../../../appTheme.interface";
 import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import closeIcon from "../../../assets/images/close_white.png";
-import Button from "@mui/material/Button";
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  height: 390,
-  width: 700,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import PlayTrailer from "../../PlayTrailer";
 
 const MoviePage = () => {
   const url = window.location.pathname;
   const movie_id = url.substring(url.lastIndexOf("/") + 1);
   const { themeColor } = useContext(ThemeContext);
   const [result, setResult] = useState<any>();
-  const [trailerURL, setTrailerURL] = useState<string | null>(null);
-  const [open, setOpen] = useState<boolean>(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const tmdbToken = process.env.REACT_APP_TMDB_TOKEN;
 
@@ -77,27 +54,6 @@ const MoviePage = () => {
     return null;
   }
 
-  const options = {
-    height: "390",
-    width: "100%",
-    playerVars: {
-      autoplay: 1,
-    },
-  };
-
-  const handleClick = (result: any) => {
-    if (trailerURL) {
-      setTrailerURL("");
-    } else {
-      movieTrailer(result?.title || "")
-        .then((url: string) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerURL(urlParams.get("v"));
-        })
-        .catch((error: any) => console.log(error));
-    }
-  };
-
   return (
     <div style={themeStyle}>
       <Nav />
@@ -120,33 +76,7 @@ const MoviePage = () => {
                 {result.genres.map((genre: any) => genre.name).join(", ")}
               </p>
             )}
-            <Button
-              variant="contained"
-              color="error"
-              onClick={() => {
-                handleOpen();
-                handleClick(result);
-              }}
-            >
-              Play Trailer
-            </Button>
-            <Modal open={open} onClose={handleClose}>
-              <Box sx={style}>
-                <img
-                  src={closeIcon}
-                  alt="close icon"
-                  onClick={handleClose}
-                  className="movie__trailer-close-icon"
-                />
-                {trailerURL ? (
-                  <YouTube videoId={trailerURL} opts={options} />
-                ) : (
-                  <p className="movie__trailer-error">
-                    We are sorry, there is no trailer for this movie.
-                  </p>
-                )}
-              </Box>
-            </Modal>
+            <PlayTrailer result={result} />
           </div>
         </div>
       </div>
