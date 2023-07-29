@@ -8,14 +8,14 @@ const LoginScreen = () => {
   const [signUp, setSignUp] = useState(false);
   const emailRef = useRef<HTMLInputElement | null>(null);
 
- const signUpAndSetLocalStorage = ()=> {
-     setSignUp(true);
-    localStorage.setItem('email', emailRef.current!.value)
- }
+  const signUpAndSetLocalStorage = () => {
+    setSignUp(true);
+    localStorage.setItem("email", emailRef.current!.value);
+  };
 
-  const reload = () =>{
-    window.location.reload()
-  }
+  const reload = () => {
+    window.location.reload();
+  };
 
   return (
     <div className="loginScreen">
@@ -45,16 +45,17 @@ const LoginScreen = () => {
               membership.
             </h3>
             <div className="loginScreen__input">
-              <form>
-                <input type="email" placeholder="Email Address" ref={emailRef}/>
-                <button
-                  onClick={() => {
-                    signUpAndSetLocalStorage()
-                  }}
-                  className="loginScreen_getStarted"
-                >
-                  Get started
-                </button>
+              <form
+                onSubmit={() => {
+                  signUpAndSetLocalStorage();
+                }}
+              >
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  ref={emailRef}
+                />
+                <button className="loginScreen_getStarted">Get started</button>
               </form>
             </div>
           </>

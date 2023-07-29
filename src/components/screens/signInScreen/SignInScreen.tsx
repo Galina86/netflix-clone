@@ -24,11 +24,11 @@ const SignInScreen = () => {
   return (
     <>
       <div className="signInScreen">
-        <form>
+        <form onSubmit={signIn}>
           <h1>Sign in</h1>
           <input ref={emailRef} type="email" placeholder="Email" />
           <input ref={passwordRef} type="password" placeholder="Password" />
-          <button type="submit" onClick={signIn}>
+          <button type="submit">
             Sign in
           </button>
         </form>

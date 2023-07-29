@@ -7,45 +7,62 @@ import { auth } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "../redux/userSlice";
 import ProfileScreen from "./screens/profileScreen/ProfileScreen";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const AppRouter = () => {
-
   const user = useSelector(selectUser);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-    const unsubscribe = auth.onAuthStateChanged(userAuth =>{
-      if(userAuth){
-        //Login in 
-         dispatch(login({
-          uid: userAuth.uid,
-          email : userAuth.email,
-         }))
-      } else{
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        //Login in
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          })
+        );
+      } else {
         //Logged out
-        dispatch(logout())
+        dispatch(logout());
       }
     });
 
     return unsubscribe;
-  },[dispatch])
-     
+  }, [dispatch]);
+
+  if (!user) {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "black",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   return (
-
     <Routes>
-      {!user ? <Route path="/" element={<LoginScreen />} /> :
-        (
-          <>
-            <Route path="/profile" element={<ProfileScreen/>} />
-            <Route path="/" element={<MainPage />} />
-            <Route path="movie">
-              <Route path=":id" element={<MoviePage />}></Route>
-            </Route>
-          </>)}
-
-
+      {!user ? (
+        <Route path="/" element={<LoginScreen />} />
+      ) : (
+        <>
+          <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="movie">
+            <Route path=":id" element={<MoviePage />}></Route>
+          </Route>
+        </>
+      )}
     </Routes>
-
   );
 };
 
