@@ -34,9 +34,7 @@ const SignUp = () => {
         <h1>Create your account</h1>
         <input ref={emailRef} type="email" placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
-        <button type="submit" >
-          Sign Up
-        </button>
+        <button type="submit">SIGN UP</button>
       </form>
     </div>
   );

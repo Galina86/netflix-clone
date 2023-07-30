@@ -51,11 +51,13 @@
   background-color: #e50914;
   border: none;
   cursor: pointer;
+  font-weight: 600;
 }
 
-.profileScreen__plans > h3 {
+.profileScreen__plans > h2 {
   border-bottom: 1px solid #282c2d;
   padding-bottom: 10px;
+text-align: center;
 }
 
 .profileScreen__plans {

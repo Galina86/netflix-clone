@@ -25,7 +25,7 @@ const Row = (props: IRow) => {
 
   return (
     <div className="row">
-      <h2>{props.title}</h2>
+      <h2 className='row_title'>{props.title}</h2>
       <div className="row_posters">
         {movies.map((movie) => (
           <img

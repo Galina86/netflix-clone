@@ -3,7 +3,7 @@ import { Button, Box } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-import closeIcon from "../assets/images/close_white.png";
+import "./PlayTrailer.css";
 
 const style = {
   position: "absolute" as "absolute",
@@ -13,9 +13,8 @@ const style = {
   height: 390,
   width: 700,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: 0.1,
 };
 
 const PlayTrailer = (result: any) => {
@@ -25,16 +24,12 @@ const PlayTrailer = (result: any) => {
   const [trailerURL, setTrailerURL] = useState<string | null>(null);
 
   const handleClick = (result: any) => {
-    if (trailerURL) {
-      setTrailerURL("");
-    } else {
-      movieTrailer(result?.title || "")
-        .then((url: string) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerURL(urlParams.get("v"));
-        })
-        .catch((error: any) => console.log(error));
-    }
+    movieTrailer(result?.title || "")
+      .then((url: string) => {
+        const urlParams = new URLSearchParams(new URL(url).search);
+        setTrailerURL(urlParams.get("v"));
+      })
+      .catch((error: any) => console.log(error));
   };
 
   const options = {
@@ -59,16 +54,10 @@ const PlayTrailer = (result: any) => {
       </Button>
       <Modal open={isOpen} onClose={handleClose}>
         <Box sx={style}>
-          <img
-            src={closeIcon}
-            alt="close icon"
-            onClick={handleClose}
-            className="movie__trailer-close-icon"
-          />
           {trailerURL ? (
             <YouTube videoId={trailerURL} opts={options} />
           ) : (
-            <p className="movie__trailer-error">
+            <p className="trailer-error-message">
               We are sorry, there is no trailer for this movie.
             </p>
           )}

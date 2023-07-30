@@ -4,6 +4,8 @@ import requests from "../../requests";
 import "./Banner.css";
 import { IBanner } from "./banner.interface";
 import PlayTrailer from "../PlayTrailer";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Banner() {
   const [movie, setMovie] = useState<IBanner>();
@@ -26,23 +28,37 @@ function Banner() {
   }
 
   return (
-    <header
+    <div
       className="banner"
       style={{
         backgroundImage: `url("https://image.tmdb.org/t/p/w1280/${movie?.backdrop_path}")`,
       }}
     >
-      <div className="banner__contents">
-        <h1 className="banner__title">
-          {movie?.title || movie?.name || movie?.original_name}
-        </h1>
-        <PlayTrailer result={movie} />
-        <h1 className="banner__description">
-          {truncate(`${movie?.overview}`, 150)}
-        </h1>
-      </div>
+      {!movie ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "black",
+            height: "100vh",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div className="banner__contents">
+          <h1 className="banner__title">
+            {movie?.title || movie?.name || movie?.original_name}
+          </h1>
+          <PlayTrailer result={movie} />
+          <h1 className="banner__description">
+            {truncate(`${movie?.overview}`, 150)}
+          </h1>
+        </div>
+      )}
       <div className="banner--fadeBottom"></div>
-    </header>
+    </div>
   );
 }
 
