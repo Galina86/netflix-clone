@@ -80,6 +80,7 @@
   width: 30%;
   border: none;
   max-width: 600px;
+  border-radius: 5px  0px 0px 5px;
 }
 
 .loginScreen_getStarted {
@@ -91,6 +92,7 @@
   font-weight: 600;
   cursor: pointer;
   text-transform: uppercase;
+  border-radius: 0px  5px 5px 0px;
 }
 
 .loginScreen__input {

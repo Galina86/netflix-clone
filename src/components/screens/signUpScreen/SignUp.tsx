@@ -1,11 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./SignUp.css";
 import { auth } from "../../../firebase";
+import CloseIcon from "@mui/icons-material/Close";
 
 const SignUp = () => {
   const savedEmail = localStorage.getItem("email");
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     if (savedEmail !== null) {
@@ -28,10 +31,22 @@ const SignUp = () => {
       });
   };
 
+  const reload = () => {
+    window.location.reload();
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    reload();
+  };
+
   return (
-    <div className="signUpScreen">
+    <div className={`signUpScreen ${isOpen ? "active" : "inactive"}`}>
+      <div className='signUp__close-icon' onClick={handleClose}>
+        <CloseIcon />
+      </div>
       <form onSubmit={register}>
-        <h1>Create your account</h1>
+        <h2>Create your account</h2>
         <input ref={emailRef} type="email" placeholder="Email" />
         <input ref={passwordRef} type="password" placeholder="Password" />
         <button type="submit">SIGN UP</button>

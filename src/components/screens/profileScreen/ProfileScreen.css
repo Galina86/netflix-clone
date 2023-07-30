@@ -45,7 +45,6 @@
 .profileScreen__signOut {
   padding: 10px 20px;
   font-size: 1rem;
-  margin-top: 5%;
   width: 100%;
   color: white;
   background-color: #e50914;
@@ -57,7 +56,7 @@
 .profileScreen__plans > h2 {
   border-bottom: 1px solid #282c2d;
   padding-bottom: 10px;
-text-align: center;
+  text-align: center;
 }
 
 .profileScreen__plans {
@@ -69,22 +68,6 @@ text-align: center;
   margin: 20px;
 }
 
-.profileScreen__plan_button {
-  color: white;
-  background-color: #e50914;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  font-weight: 600;
-  border-radius: 5px;
-}
-
-.profileScreen__plan_buttonCP {
-  color: white;
-  background-color: GREY;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  font-weight: 600;
-  border-radius: 5px;
+.profileScreen__plan:last-of-type {
+  margin-bottom: 30px;
 }
