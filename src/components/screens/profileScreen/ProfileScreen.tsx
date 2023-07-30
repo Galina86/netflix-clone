@@ -35,6 +35,7 @@ const ProfileScreen = () => {
                   variant="contained"
                   color="error"
                   className="profileScreen__plan_button"
+                  size='small'
                 >
                   Subscribe
                 </Button>
@@ -45,6 +46,7 @@ const ProfileScreen = () => {
                   variant="contained"
                   color="error"
                   className="profileScreen__plan_button"
+                  size='small'
                 >
                   Subscribe
                 </Button>
@@ -54,6 +56,7 @@ const ProfileScreen = () => {
                 <Button
                   variant="contained"
                   className="profileScreen__plan_buttonCP"
+                  size='small'
                 >
                   Current Plan
                 </Button>

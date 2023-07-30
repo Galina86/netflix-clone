@@ -1,9 +1,25 @@
 .signInScreen {
   max-width: 300px;
-  padding: 70px;
+  padding: 20px 30px 50px;
   margin-left: auto;
   margin-right: auto;
   background: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+
+.signInScreen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.signInScreen.inactive {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.signIn__close-icon {
+  text-align: right;
+  cursor: pointer;
 }
 
 .signInScreen > form {

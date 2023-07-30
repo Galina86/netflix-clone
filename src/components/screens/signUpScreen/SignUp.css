@@ -1,9 +1,25 @@
 .signUpScreen {
   max-width: 300px;
-  padding: 70px;
+  padding: 20px 30px 50px;
   margin-left: auto;
   margin-right: auto;
   background: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+}
+
+.signUpScreen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.signUpScreen.inactive {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.signUp__close-icon {
+  text-align: right;
+  cursor: pointer;
 }
 
 .signUpScreen > form {
@@ -32,7 +48,7 @@
   margin-top: 20px;
 }
 
-.signUpScreen > form > h1 {
+.signUpScreen > form > h2 {
   text-align: left;
   margin-bottom: 25px;
 }
@@ -43,7 +59,7 @@
   margin-bottom: 25px;
 }
 
-.MuiInputBase-input  {
+.MuiInputBase-input {
   background: white;
 }
 

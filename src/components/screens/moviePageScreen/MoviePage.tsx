@@ -5,6 +5,7 @@ import { IAppTheme } from "../../../appTheme.interface";
 import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
 import PlayTrailer from "../../PlayTrailer";
+import axios from "axios";
 
 const MoviePage = () => {
   const url = window.location.pathname;
@@ -38,14 +39,13 @@ const MoviePage = () => {
   };
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      const movieResult = await fetch(
+    async function fetchMovies() {
+      const movieResult = await axios.get(
         `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US`,
         tokens
       );
-      const json = await movieResult.json();
-      setResult(json);
-    };
+      setResult(movieResult.data);
+    }
     fetchMovies();
     //removed dependencies to fix endless call to server
   }, []);
