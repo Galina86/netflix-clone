@@ -4,6 +4,7 @@ import { selectUser } from "../../../redux/userSlice";
 import { auth } from "../../../firebase";
 import { useNavigate } from "react-router";
 import "./ProfileScreen.css";
+import { Button } from "@mui/material";
 
 const ProfileScreen = () => {
   const user = useSelector(selectUser);
@@ -27,31 +28,44 @@ const ProfileScreen = () => {
           <div className="profileScreen__details">
             <h2>{user.email}</h2>
             <div className="profileScreen__plans">
-              <h3>Plans</h3>
+              <h2>PLANS</h2>
               <div className="profileScreen__plan">
-                <h5>Premium</h5>
-                <button className="profileScreen__plan_button">
+                <h3>Premium</h3>
+                <Button
+                  variant="contained"
+                  color="error"
+                  className="profileScreen__plan_button"
+                >
                   Subscribe
-                </button>
+                </Button>
               </div>
               <div className="profileScreen__plan">
-                <h5>Basic</h5>
-                <button className="profileScreen__plan_button">
+                <h3>Basic</h3>
+                <Button
+                  variant="contained"
+                  color="error"
+                  className="profileScreen__plan_button"
+                >
                   Subscribe
-                </button>
+                </Button>
               </div>
               <div className="profileScreen__plan">
-                <h5>Standart</h5>
-                <button className="profileScreen__plan_buttonCP">
+                <h3>Standard</h3>
+                <Button
+                  variant="contained"
+                  className="profileScreen__plan_buttonCP"
+                >
                   Current Plan
-                </button>
+                </Button>
               </div>
-              <button
+              <Button
+                variant="contained"
+                color="error"
                 onClick={() => signOutAndNavigateToLoginScreen()}
                 className="profileScreen__signOut"
               >
                 Sign Out
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -57,29 +57,33 @@ const MoviePage = () => {
   return (
     <div style={themeStyle}>
       <Nav />
-      <div className="movie">
-        <h2 className="movie__title">{result["title"]}</h2>
-        <div className="movie__details">
-          <img
-            className="movie__poster"
-            src={`${IMAGE_BASE_URL}${result.poster_path}`}
-            alt={result.title}
-          />
-          <div className="movie__wrapper">
-            <p className="movie__description">{result.overview}</p>
-            <p className="movie__rating">
-              Average rating: {result.vote_average}
-            </p>
-            {result.genres && (
-              <p className="movie__genre">
-                Genre:{" "}
-                {result.genres.map((genre: any) => genre.name).join(", ")}
+      {result.success === false ? (
+        <p className="movie__error-message">{result.status_message}</p>
+      ) : (
+        <div className="movie">
+          <h2 className="movie__title">{result["title"]}</h2>
+          <div className="movie__details">
+            <img
+              className="movie__poster"
+              src={`${IMAGE_BASE_URL}${result.poster_path}`}
+              alt={result.title}
+            />
+            <div className="movie__wrapper">
+              <p className="movie__description">{result.overview}</p>
+              <p className="movie__rating">
+                Average rating: {result.vote_average}
               </p>
-            )}
-            <PlayTrailer result={result} />
+              {result.genres && (
+                <p className="movie__genre">
+                  Genre:{" "}
+                  {result.genres.map((genre: any) => genre.name).join(", ")}
+                </p>
+              )}
+              <PlayTrailer result={result} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
