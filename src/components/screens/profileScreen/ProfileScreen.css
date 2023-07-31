@@ -1,7 +1,5 @@
 .profileScreen {
   height: 100vh;
-  color: white;
-  background: black;
 }
 
 .profileScreen__body {
@@ -30,7 +28,6 @@
 }
 
 .profileScreen__details {
-  color: white;
   margin-left: 25px;
   flex: 1;
 }
