@@ -11,18 +11,3 @@ export const mainPageStyle: IAppTheme = {
           color: "black",
         },
       };
-    
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
