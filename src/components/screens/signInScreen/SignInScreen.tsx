@@ -1,14 +1,18 @@
-import { useRef, useState } from "react";
+import {useState } from "react";
 import "./SignInScreen.css";
 import { auth } from "../../../firebase";
 import CloseIcon from "@mui/icons-material/Close";
+import { HOME_PAGE } from "../../../constants";
+import { useNavigate } from "react-router";
 
 const SignInScreen = () => {
-  const emailRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
+  const navigate = useNavigate()
+  
   const reload = () => {
     window.location.reload();
   };
@@ -20,17 +24,16 @@ const SignInScreen = () => {
 
   const signIn = (e: any) => {
     e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(
-        emailRef.current!.value,
-        passwordRef.current!.value
+    auth.signInWithEmailAndPassword(
+        email, password
       )
       .then((authUser) => {
         console.log(authUser);
+        navigate(HOME_PAGE);
       })
       .catch((error) => {
         alert(error.message);
-      });
+      } );
   };
 
   return (
@@ -41,8 +44,8 @@ const SignInScreen = () => {
             <CloseIcon />
           </div>
           <h2>Please enter your email and password</h2>
-          <input ref={emailRef} type="email" placeholder="Email" />
-          <input ref={passwordRef} type="password" placeholder="Password" />
+          <input type="text" id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+        <input type="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
           <button type="submit">SIGN IN</button>
         </form>
       </div>
