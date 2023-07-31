@@ -18,6 +18,7 @@ const AppRouter = () => {
   const [isUserFetched, setIsUserFetched] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsUserFetched(true);
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
         //Login in
@@ -27,7 +28,6 @@ const AppRouter = () => {
             email: userAuth.email,
           })
         );
-        setIsUserFetched(true);
       } else {
         //Logged out
         dispatch(logout());
