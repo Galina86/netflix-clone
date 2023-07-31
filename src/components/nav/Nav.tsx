@@ -4,7 +4,7 @@ import ThemeToggle from "../ThemeToggle";
 import { Link, useNavigate } from "react-router-dom";
 
 function Nav() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {

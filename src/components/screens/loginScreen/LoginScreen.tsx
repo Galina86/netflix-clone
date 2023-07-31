@@ -4,8 +4,8 @@ import SignInScreen from "../signInScreen/SignInScreen";
 import SignUp from "../signUpScreen/SignUp";
 
 const LoginScreen = () => {
-  const [signIn, setSignIn] = useState(false);
-  const [signUp, setSignUp] = useState(false);
+  const [signIn, setSignIn] = useState<boolean>(false);
+  const [signUp, setSignUp] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement | null>(null);
 
   const signUpAndSetLocalStorage = () => {

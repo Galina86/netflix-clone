@@ -8,7 +8,7 @@ const SignUp = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   useEffect(() => {
     if (savedEmail !== null) {
@@ -42,7 +42,7 @@ const SignUp = () => {
 
   return (
     <div className={`signUpScreen ${isOpen ? "active" : "inactive"}`}>
-      <div className='signUp__close-icon' onClick={handleClose}>
+      <div className="signUp__close-icon" onClick={handleClose}>
         <CloseIcon />
       </div>
       <form onSubmit={register}>

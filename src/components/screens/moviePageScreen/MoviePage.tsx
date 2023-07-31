@@ -57,8 +57,10 @@ const MoviePage = () => {
   return (
     <div style={themeStyle}>
       <Nav />
-      {result.success === false ? (
-        <p className="movie__error-message">{result.status_message}</p>
+      {result.success === false || !result.poster_path ? (
+        <p className="movie__error-message">
+          Ooops, sorry, we couldn't find this movie in our database
+        </p>
       ) : (
         <div className="movie">
           <h2 className="movie__title">{result["title"]}</h2>
@@ -73,12 +75,10 @@ const MoviePage = () => {
               <p className="movie__rating">
                 Average rating: {result.vote_average}
               </p>
-              {result.genres && (
-                <p className="movie__genre">
-                  Genre:{" "}
-                  {result.genres.map((genre: any) => genre.name).join(", ")}
-                </p>
-              )}
+              <p className="movie__genre">
+                Genre:{" "}
+                {result.genres.map((genre: any) => genre.name).join(", ")}
+              </p>
               <PlayTrailer result={result} />
             </div>
           </div>
