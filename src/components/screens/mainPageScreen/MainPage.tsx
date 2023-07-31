@@ -8,8 +8,6 @@ import { mainPageStyle } from "../../theme/theme";
 
 const MainPage = () => {
   const { themeColor } = useContext(ThemeContext);
-  //@@@TODO move to handleThemeToggle
-  localStorage.setItem("theme", themeColor);
 
   const themeStyle = {
     ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
