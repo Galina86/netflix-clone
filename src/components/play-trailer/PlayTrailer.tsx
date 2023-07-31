@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import "./PlayTrailer.css";
+import CloseIcon from "@mui/icons-material/Close";
 
 const style = {
   position: "absolute" as "absolute",

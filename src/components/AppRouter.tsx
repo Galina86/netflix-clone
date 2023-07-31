@@ -18,8 +18,8 @@ const AppRouter = () => {
   const [isUserFetched, setIsUserFetched] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsUserFetched(true);
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      setIsUserFetched(true);
       if (userAuth) {
         //Login in
         dispatch(
@@ -31,17 +31,13 @@ const AppRouter = () => {
       } else {
         //Logged out
         dispatch(logout());
-        setIsUserFetched(false);
       }
     });
 
     return unsubscribe;
   }, [dispatch]);
 
-  console.log("**** useer", user);
-  console.log("**** isUserFetched", isUserFetched);
-
-  if (!user && isUserFetched) {
+  if (!user && !isUserFetched) {
     return (
       <Box
         sx={{
@@ -59,7 +55,7 @@ const AppRouter = () => {
 
   return (
     <Routes>
-      {!user ? (
+      {!user && isUserFetched ? (
         <Route path={HOME_PAGE} element={<LoginScreen />} />
       ) : (
         <>
