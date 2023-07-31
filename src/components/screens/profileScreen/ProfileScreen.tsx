@@ -5,18 +5,30 @@ import { auth } from "../../../firebase";
 import { useNavigate } from "react-router";
 import "./ProfileScreen.css";
 import { Button } from "@mui/material";
+import { ThemeContext } from "../../../App";
+import { useContext } from "react";
+import { mainPageStyle } from "../../theme/theme";
 
 const ProfileScreen = () => {
   const user = useSelector(selectUser);
   const navigate = useNavigate();
+  const { themeColor } = useContext(ThemeContext);
 
   const signOutAndNavigateToLoginScreen = () => {
     auth.signOut();
     navigate("/");
   };
 
+  const themeStyle = {
+    ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
+  
+  };
+
+  console.log("themeColor", themeColor)
+
   return (
-    <div className="profileScreen">
+    <div style={themeStyle}>
+    <div className="profileScreen" >
       <Nav />
       <div className="profileScreen__body">
         <h1>Edit Profile</h1>
@@ -73,6 +85,7 @@ const ProfileScreen = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

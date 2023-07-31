@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import "./MoviePage.css";
 import { IMAGE_BASE_URL } from "../../../constants";
-import { IAppTheme } from "../../../appTheme.interface";
 import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
 import PlayTrailer from "../../play-trailer/PlayTrailer";
 import axios from "axios";
+import { mainPageStyle } from "../../theme/theme";
 
 const MoviePage = () => {
   const url = window.location.pathname;
@@ -23,16 +23,6 @@ const MoviePage = () => {
     },
   };
 
-  const mainPageStyle: IAppTheme = {
-    dark: {
-      backgroundColor: "#111",
-      color: "white",
-    },
-    light: {
-      backgroundColor: "white",
-      color: "black",
-    },
-  };
 
   const themeStyle = {
     ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),

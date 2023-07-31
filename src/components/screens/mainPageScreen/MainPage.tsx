@@ -6,22 +6,12 @@ import Banner from "../../banner/Banner";
 import { ThemeContext } from "../../../App";
 import { IAppTheme } from "../../../appTheme.interface";
 import Nav from "../../nav/Nav";
+import { mainPageStyle } from "../../theme/theme";
 
 const MainPage = () => {
   const { themeColor } = useContext(ThemeContext);
   //@@@TODO move to handleThemeToggle
   localStorage.setItem("theme", themeColor);
-
-  const mainPageStyle: IAppTheme = {
-    dark: {
-      backgroundColor: "#111",
-      color: "white",
-    },
-    light: {
-      backgroundColor: "white",
-      color: "black",
-    },
-  };
 
   const themeStyle = {
     ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
