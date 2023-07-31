@@ -7,10 +7,13 @@ import { auth } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "../redux/userSlice";
 import ProfileScreen from "./screens/profileScreen/ProfileScreen";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const AppRouter = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const userInLocalStorage = localStorage.getItem("email");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -31,7 +34,7 @@ const AppRouter = () => {
     return unsubscribe;
   }, [dispatch]);
 
-  // if (!user) {
+  // if (userInLocalStorage === "") {
   //   return (
   //     <Box
   //       sx={{
@@ -46,6 +49,8 @@ const AppRouter = () => {
   //     </Box>
   //   );
   // }
+
+  console.log("user", !!userInLocalStorage);
 
   return (
     <Routes>

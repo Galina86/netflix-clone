@@ -21,71 +21,68 @@ const ProfileScreen = () => {
 
   const themeStyle = {
     ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
-  
   };
-
-  console.log("themeColor", themeColor)
 
   return (
     <div style={themeStyle}>
-    <div className="profileScreen" >
-      <Nav />
-      <div className="profileScreen__body">
-        <h1>Edit Profile</h1>
-        <div className="profileScreen__info">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-            alt="Netflix avatar"
-          />
-          <div className="profileScreen__details">
-            <h2>{user.email}</h2>
-            <div className="profileScreen__plans">
-              <h2>PLANS</h2>
-              <div className="profileScreen__plan">
-                <h3>Premium</h3>
+      <div className="profileScreen">
+        <Nav />
+        <div className="profileScreen__body">
+          <h1>Edit Profile</h1>
+          <div className="profileScreen__info">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+              alt="Netflix avatar"
+            />
+            <div className="profileScreen__details">
+              <h2>{user.email}</h2>
+              <div className="profileScreen__plans">
+                <h2>PLANS</h2>
+                <div className="profileScreen__plan">
+                  <h3>Premium</h3>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    className="profileScreen__plan_button"
+                    size="small"
+                  >
+                    Subscribe
+                  </Button>
+                </div>
+                <div className="profileScreen__plan">
+                  <h3>Basic</h3>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    className="profileScreen__plan_button"
+                    size="small"
+                  >
+                    Subscribe
+                  </Button>
+                </div>
+                <div className="profileScreen__plan">
+                  <h3>Standard</h3>
+                  <Button
+                    variant="contained"
+                    className="profileScreen__plan_buttonCP"
+                    size="small"
+                  >
+                    Current Plan
+                  </Button>
+                </div>
                 <Button
                   variant="contained"
                   color="error"
-                  className="profileScreen__plan_button"
-                  size='small'
+                  onClick={() => signOutAndNavigateToLoginScreen()}
+                  className="profileScreen__signOut"
                 >
-                  Subscribe
+                  Sign Out
                 </Button>
               </div>
-              <div className="profileScreen__plan">
-                <h3>Basic</h3>
-                <Button
-                  variant="contained"
-                  color="error"
-                  className="profileScreen__plan_button"
-                  size='small'
-                >
-                  Subscribe
-                </Button>
-              </div>
-              <div className="profileScreen__plan">
-                <h3>Standard</h3>
-                <Button
-                  variant="contained"
-                  className="profileScreen__plan_buttonCP"
-                  size='small'
-                >
-                  Current Plan
-                </Button>
-              </div>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => signOutAndNavigateToLoginScreen()}
-                className="profileScreen__signOut"
-              >
-                Sign Out
-              </Button>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
