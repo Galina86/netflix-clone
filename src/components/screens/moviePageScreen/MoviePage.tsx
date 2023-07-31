@@ -4,7 +4,6 @@ import { IMAGE_BASE_URL } from "../../../constants";
 import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
 import PlayTrailer from "../../play-trailer/PlayTrailer";
-import axios from "axios";
 import { mainPageStyle } from "../../theme/theme";
 
 const MoviePage = () => {

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../App";
-import { FormControlLabel, FormGroup, Switch, styled} from "@mui/material";
+import { FormControlLabel, FormGroup } from "@mui/material";
 import MaterialUISwitch from "./materialUISwitch/MaterialUISwich";
 
 const ThemeToggle = () => {
@@ -8,13 +8,22 @@ const ThemeToggle = () => {
 
   const handleThemeToggle = () => {
     setThemeColor(themeColor === "light" ? "dark" : "light");
-  };  
+  };
 
   return (
     <div>
-       <FormGroup>
-          <FormControlLabel control={<MaterialUISwitch sx={{ m: 1 }} checked={themeColor === "dark"} onChange={handleThemeToggle} color='default'/>} label="" />
-       </FormGroup>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              checked={themeColor === "dark"}
+              onChange={handleThemeToggle}
+              color="default"
+            />
+          }
+          label=""
+        />
+      </FormGroup>
     </div>
   );
 };

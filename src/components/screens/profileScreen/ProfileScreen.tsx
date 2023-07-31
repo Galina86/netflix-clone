@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 import { ThemeContext } from "../../../App";
 import { useContext } from "react";
 import { mainPageStyle } from "../../theme/theme";
+import { HOME_PAGE } from "../../../constants";
 
 const ProfileScreen = () => {
   const user = useSelector(selectUser);
@@ -16,7 +17,7 @@ const ProfileScreen = () => {
 
   const signOutAndNavigateToLoginScreen = () => {
     auth.signOut();
-    navigate("/");
+    navigate(HOME_PAGE);
   };
 
   const themeStyle = {
