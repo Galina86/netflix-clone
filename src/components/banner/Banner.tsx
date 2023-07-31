@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import requests from "../../requests";
 import "./Banner.css";
 import { IBanner } from "./banner.interface";
-import PlayTrailer from "../PlayTrailer";
+import PlayTrailer from "../play-trailer/PlayTrailer";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 

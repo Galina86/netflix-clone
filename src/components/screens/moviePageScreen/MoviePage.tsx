@@ -4,7 +4,7 @@ import { IMAGE_BASE_URL } from "../../../constants";
 import { IAppTheme } from "../../../appTheme.interface";
 import { ThemeContext } from "../../../App";
 import Nav from "../../nav/Nav";
-import PlayTrailer from "../../PlayTrailer";
+import PlayTrailer from "../../play-trailer/PlayTrailer";
 import axios from "axios";
 
 const MoviePage = () => {
