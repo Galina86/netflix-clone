@@ -11,11 +11,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: 390,
+  height: 420,
   width: 700,
   bgcolor: "background.paper",
   boxShadow: 24,
-  p: 0.1,
+  p: 1,
 };
 
 const PlayTrailer = (result: any) => {
@@ -55,6 +55,9 @@ const PlayTrailer = (result: any) => {
       </Button>
       <Modal open={isOpen} onClose={handleClose}>
         <Box sx={style}>
+          <div className="trailer_close-icon" onClick={handleClose}>
+            <CloseIcon />
+          </div>
           {trailerURL ? (
             <YouTube videoId={trailerURL} opts={options} />
           ) : (
