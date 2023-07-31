@@ -7,31 +7,29 @@ import { HOME_PAGE } from "../../../constants";
 
 const SignUp = () => {
   const savedEmail = localStorage.getItem("email");
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (savedEmail !== null) {
-      setEmail(savedEmail)
+      setEmail(savedEmail);
     }
   }, [savedEmail]);
 
-  const register =  (e: any) => { 
+  const register = (e: any) => {
     e.preventDefault();
-    auth.createUserWithEmailAndPassword(
-        email, password
-      )
+    auth
+      .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
         console.log(authUser);
         navigate(HOME_PAGE);
       })
       .catch((error) => {
         alert(error.message);
-      } );
+      });
   };
 
   const reload = () => {
@@ -50,8 +48,20 @@ const SignUp = () => {
       </div>
       <form onSubmit={register}>
         <h2>Create your account</h2>
-        <input type="text" id='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-        <input type="password" id='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <input
+          type="text"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
         <button type="submit">SIGN UP</button>
       </form>
     </div>
@@ -59,4 +69,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
