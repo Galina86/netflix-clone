@@ -7,8 +7,6 @@ import { auth } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "../redux/userSlice";
 import ProfileScreen from "./screens/profileScreen/ProfileScreen";
-import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const AppRouter = () => {
   const user = useSelector(selectUser);
@@ -48,8 +46,6 @@ const AppRouter = () => {
   //     </Box>
   //   );
   // }
-
-  console.log("&&&&&", user);
 
   return (
     <Routes>
