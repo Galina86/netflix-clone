@@ -8,7 +8,6 @@ import { useNavigate } from "react-router";
 const SignInScreen = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [error, setError] = useState<string>('')
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
@@ -25,7 +24,6 @@ const SignInScreen = () => {
 
   const signIn = (e: any) => {
     e.preventDefault();
-    if(error ! === "") setError('');
     auth.signInWithEmailAndPassword(
         email, password
       )
