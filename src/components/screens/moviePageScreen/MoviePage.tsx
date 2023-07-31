@@ -36,6 +36,7 @@ const MoviePage = () => {
 
   const themeStyle = {
     ...(themeColor === "light" ? mainPageStyle.light : mainPageStyle.dark),
+  
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ const MoviePage = () => {
   }
 
   return (
-    <div style={themeStyle}>
+    <div style={themeStyle} >
       <Nav />
       {result.success === false || !result.poster_path ? (
         <p className="movie__error-message">
