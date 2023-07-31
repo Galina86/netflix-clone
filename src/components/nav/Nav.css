@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-
   transition-timing-function: ease-in;
   transition: all 0.6s;
 }
@@ -32,9 +31,13 @@
   cursor: pointer;
 }
 
+.nav__right {
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+}
+
 .nav_toggle {
   position: fixed;
-  right: 260px;
-  width: 30px;
   object-fit: contain;
 }

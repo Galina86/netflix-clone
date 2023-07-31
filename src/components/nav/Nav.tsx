@@ -36,21 +36,25 @@ function Nav() {
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
-      <Link to={HOME_PAGE}>
+      <div className="nav__left">
+        <Link to={HOME_PAGE}>
+          <img
+            className="nav__logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
+            alt="Netflix logo"
+          />
+        </Link>
+      </div>
+      <div className="nav__right">
         <img
-          className="nav__logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
-          alt="Netflix logo"
+          onClick={handleClick}
+          className="nav__avatar"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+          alt="Netflix avatar"
         />
-      </Link>
-      <img
-        onClick={handleClick}
-        className="nav__avatar"
-        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-        alt="Netflix avatar"
-      />
-      <div className="nav_toggle">
-        <ThemeToggle />
+        <div className="nav_toggle">
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );
