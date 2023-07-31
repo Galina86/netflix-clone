@@ -1,10 +1,8 @@
 import { useContext } from "react";
-
-import Row from "../../row/Row";
 import requests from "../../../requests";
+import Row from "../../row/Row";
 import Banner from "../../banner/Banner";
 import { ThemeContext } from "../../../App";
-import { IAppTheme } from "../../../appTheme.interface";
 import Nav from "../../nav/Nav";
 import { mainPageStyle } from "../../theme/theme";
 

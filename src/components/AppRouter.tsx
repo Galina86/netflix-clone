@@ -7,6 +7,7 @@ import { auth } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "../redux/userSlice";
 import ProfileScreen from "./screens/profileScreen/ProfileScreen";
+import { HOME_PAGE, PROFILE_PAGE, MOVIE_PAGE} from '../constants';
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -55,12 +56,12 @@ const AppRouter = () => {
   return (
     <Routes>
       {!user ? (
-        <Route path="/" element={<LoginScreen />} />
+        <Route path={HOME_PAGE} element={<LoginScreen />} />
       ) : (
         <>
-          <Route path="/profile" element={<ProfileScreen />} />
-          <Route path="/" element={<MainPage />} />
-          <Route path="movie">
+          <Route path={PROFILE_PAGE} element={<ProfileScreen />} />
+          <Route path={HOME_PAGE} element={<MainPage />} />
+          <Route path={MOVIE_PAGE}>
             <Route path=":id" element={<MoviePage />}></Route>
           </Route>
         </>
